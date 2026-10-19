@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>DAM CRM - Acceso</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Iniciar sesión</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="doLogin()">
+        <ion-input
+          label="Email" labelPlacement="stacked" type="email"
+          formControlName="email" placeholder="correo@ejemplo.com">
+        </ion-input>
+        <ion-input
+          label="Contraseña" labelPlacement="stacked" type="password"
+          formControlName="password" class="ion-margin-top">
+        </ion-input>
+
+        <ion-button
+          type="submit" expand="block" class="ion-margin-top"
+          [disabled]="loginForm.invalid || loading">
+          {{ loading ? 'Entrando...' : 'Entrar' }}
+        </ion-button>
+      </form>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-toast
+    [isOpen]="isToastOpen"
+    [message]="toastMessage"
+    duration="3000"
+    (didDismiss)="setToastOpen(false)">
+  </ion-toast>
+</ion-content>
