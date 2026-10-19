@@ -114,4 +114,7 @@ export class HomePage implements OnInit {
     await this.supabaseService.logout();
     await this.router.navigateByUrl('/login', { replaceUrl: true });
   }
+    goGallery() {
+    this.router.navigateByUrl('/gallery');
+  }
 }
